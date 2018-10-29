@@ -34,12 +34,11 @@ public class ContainerImpl implements Container {
 
     @Override
     public void updateSensorTemperature(int temperature) throws SensorException {
+        this.sensorTemperature.setValue(temperature);
         if(temperature < beer.getMinTemperature()) {
             throw new SensorException("Temperatura do Container está abaixo do permitido. Atual " + temperature + "° C");
         } else if (temperature > beer.getMaxTemperature()) {
             throw new SensorException("Temperatura do Container está acima do permitido. Atual " + temperature + "° C");
-        } else {
-            this.sensorTemperature.setValue(temperature);
         }
     }
 
